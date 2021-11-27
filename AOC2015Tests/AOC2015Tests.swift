@@ -1,33 +1,28 @@
-//
-//  AOC2015Tests.swift
-//  AOC2015Tests
-//
-//  Created by Richard Pineo on 11/26/21.
-//
 
+import AOCLib
+import Foundation
 import XCTest
-@testable import AOC2015
 
-class AOC2015Tests: XCTestCase {
+class Test2020: XCTestCase {
+	func testOne() throws {
+		testOne(Solve1())
+	}
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+	func testAll() throws {
+		let puzzles2015 = Puzzles2015()
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+		puzzles2015.puzzles.puzzles.forEach { puzzle in
+			print("Testing \(puzzle.id): \(puzzle.name)")
+			let solver = puzzle.solver
+			testOne(solver)
+		}
+	}
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+	func testOne(_ solver: PuzzleSolver) {
+		XCTAssertTrue(solver.solveAExamples())
+		XCTAssertTrue(solver.solveBExamples())
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+		XCTAssertEqual(solver.solveA(), solver.answerA)
+		XCTAssertEqual(solver.solveB(), solver.answerB)
+	}
 }

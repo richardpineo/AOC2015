@@ -8,21 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		BFE871332752057300D16C9E /* AOC2015App.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE871322752057300D16C9E /* AOC2015App.swift */; };
-		BFE871352752057300D16C9E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE871342752057300D16C9E /* ContentView.swift */; };
 		BFE871372752057400D16C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE871362752057400D16C9E /* Assets.xcassets */; };
 		BFE8713A2752057400D16C9E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE871392752057400D16C9E /* Preview Assets.xcassets */; };
 		BFE871442752057400D16C9E /* AOC2015Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE871432752057400D16C9E /* AOC2015Tests.swift */; };
+		BFE8715E275206B900D16C9E /* AOCLib in Frameworks */ = {isa = PBXBuildFile; productRef = BFE8715D275206B900D16C9E /* AOCLib */; };
+		BFE87160275206CC00D16C9E /* Puzzles2015.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE8715F275206CC00D16C9E /* Puzzles2015.swift */; };
+		BFE871632752071B00D16C9E /* Solve1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE871622752071B00D16C9E /* Solve1.swift */; };
+		BFE87166275207BB00D16C9E /* Input1.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFE87165275207BB00D16C9E /* Input1.txt */; };
+		BFE871672752087100D16C9E /* Puzzles2015.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE8715F275206CC00D16C9E /* Puzzles2015.swift */; };
+		BFE871682752087E00D16C9E /* Solve1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE871622752071B00D16C9E /* Solve1.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		BFE871402752057400D16C9E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFE871272752057300D16C9E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BFE8712E2752057300D16C9E;
-			remoteInfo = AOC2015;
-		};
-		BFE8714A2752057400D16C9E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFE871272752057300D16C9E /* Project object */;
 			proxyType = 1;
@@ -34,12 +32,13 @@
 /* Begin PBXFileReference section */
 		BFE8712F2752057300D16C9E /* AOC2015.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AOC2015.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE871322752057300D16C9E /* AOC2015App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AOC2015App.swift; sourceTree = "<group>"; };
-		BFE871342752057300D16C9E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BFE871362752057400D16C9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFE871392752057400D16C9E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BFE8713F2752057400D16C9E /* AOC2015Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AOC2015Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE871432752057400D16C9E /* AOC2015Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AOC2015Tests.swift; sourceTree = "<group>"; };
-		BFE871492752057400D16C9E /* AOC2015UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AOC2015UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFE8715F275206CC00D16C9E /* Puzzles2015.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzles2015.swift; sourceTree = "<group>"; };
+		BFE871622752071B00D16C9E /* Solve1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solve1.swift; sourceTree = "<group>"; };
+		BFE87165275207BB00D16C9E /* Input1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Input1.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,17 +46,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFE8715E275206B900D16C9E /* AOCLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BFE8713C2752057400D16C9E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BFE871462752057400D16C9E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -81,7 +74,6 @@
 			children = (
 				BFE8712F2752057300D16C9E /* AOC2015.app */,
 				BFE8713F2752057400D16C9E /* AOC2015Tests.xctest */,
-				BFE871492752057400D16C9E /* AOC2015UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,7 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				BFE871322752057300D16C9E /* AOC2015App.swift */,
-				BFE871342752057300D16C9E /* ContentView.swift */,
+				BFE8715F275206CC00D16C9E /* Puzzles2015.swift */,
+				BFE871612752070700D16C9E /* Puzzles */,
 				BFE871362752057400D16C9E /* Assets.xcassets */,
 				BFE871382752057400D16C9E /* Preview Content */,
 			);
@@ -113,6 +106,23 @@
 			path = AOC2015Tests;
 			sourceTree = "<group>";
 		};
+		BFE871612752070700D16C9E /* Puzzles */ = {
+			isa = PBXGroup;
+			children = (
+				BFE871642752072600D16C9E /* 1 */,
+			);
+			path = Puzzles;
+			sourceTree = "<group>";
+		};
+		BFE871642752072600D16C9E /* 1 */ = {
+			isa = PBXGroup;
+			children = (
+				BFE87165275207BB00D16C9E /* Input1.txt */,
+				BFE871622752071B00D16C9E /* Solve1.swift */,
+			);
+			path = 1;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,6 +139,9 @@
 			dependencies = (
 			);
 			name = AOC2015;
+			packageProductDependencies = (
+				BFE8715D275206B900D16C9E /* AOCLib */,
+			);
 			productName = AOC2015;
 			productReference = BFE8712F2752057300D16C9E /* AOC2015.app */;
 			productType = "com.apple.product-type.application";
@@ -151,24 +164,6 @@
 			productReference = BFE8713F2752057400D16C9E /* AOC2015Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BFE871482752057400D16C9E /* AOC2015UITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BFE871592752057400D16C9E /* Build configuration list for PBXNativeTarget "AOC2015UITests" */;
-			buildPhases = (
-				BFE871452752057400D16C9E /* Sources */,
-				BFE871462752057400D16C9E /* Frameworks */,
-				BFE871472752057400D16C9E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BFE8714B2752057400D16C9E /* PBXTargetDependency */,
-			);
-			name = AOC2015UITests;
-			productName = AOC2015UITests;
-			productReference = BFE871492752057400D16C9E /* AOC2015UITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -186,10 +181,6 @@
 						CreatedOnToolsVersion = 13.1;
 						TestTargetID = BFE8712E2752057300D16C9E;
 					};
-					BFE871482752057400D16C9E = {
-						CreatedOnToolsVersion = 13.1;
-						TestTargetID = BFE8712E2752057300D16C9E;
-					};
 				};
 			};
 			buildConfigurationList = BFE8712A2752057300D16C9E /* Build configuration list for PBXProject "AOC2015" */;
@@ -201,13 +192,15 @@
 				Base,
 			);
 			mainGroup = BFE871262752057300D16C9E;
+			packageReferences = (
+				BFE8715C275206B900D16C9E /* XCRemoteSwiftPackageReference "AOCLib" */,
+			);
 			productRefGroup = BFE871302752057300D16C9E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				BFE8712E2752057300D16C9E /* AOC2015 */,
 				BFE8713E2752057400D16C9E /* AOC2015Tests */,
-				BFE871482752057400D16C9E /* AOC2015UITests */,
 			);
 		};
 /* End PBXProject section */
@@ -218,18 +211,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFE8713A2752057400D16C9E /* Preview Assets.xcassets in Resources */,
+				BFE87166275207BB00D16C9E /* Input1.txt in Resources */,
 				BFE871372752057400D16C9E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BFE8713D2752057400D16C9E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BFE871472752057400D16C9E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -243,7 +230,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFE871352752057300D16C9E /* ContentView.swift in Sources */,
+				BFE87160275206CC00D16C9E /* Puzzles2015.swift in Sources */,
+				BFE871632752071B00D16C9E /* Solve1.swift in Sources */,
 				BFE871332752057300D16C9E /* AOC2015App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,13 +241,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFE871442752057400D16C9E /* AOC2015Tests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BFE871452752057400D16C9E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				BFE871672752087100D16C9E /* Puzzles2015.swift in Sources */,
+				BFE871682752087E00D16C9E /* Solve1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,11 +253,6 @@
 			isa = PBXTargetDependency;
 			target = BFE8712E2752057300D16C9E /* AOC2015 */;
 			targetProxy = BFE871402752057400D16C9E /* PBXContainerItemProxy */;
-		};
-		BFE8714B2752057400D16C9E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BFE8712E2752057300D16C9E /* AOC2015 */;
-			targetProxy = BFE8714A2752057400D16C9E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -503,52 +481,6 @@
 			};
 			name = Release;
 		};
-		BFE8715A2752057400D16C9E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WE3Z3S3MCF;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pineo.AOC2015UITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = AOC2015;
-			};
-			name = Debug;
-		};
-		BFE8715B2752057400D16C9E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WE3Z3S3MCF;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pineo.AOC2015UITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = AOC2015;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -579,16 +511,26 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BFE871592752057400D16C9E /* Build configuration list for PBXNativeTarget "AOC2015UITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BFE8715A2752057400D16C9E /* Debug */,
-				BFE8715B2752057400D16C9E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BFE8715C275206B900D16C9E /* XCRemoteSwiftPackageReference "AOCLib" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/richardpineo/AOCLib";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BFE8715D275206B900D16C9E /* AOCLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFE8715C275206B900D16C9E /* XCRemoteSwiftPackageReference "AOCLib" */;
+			productName = AOCLib;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BFE871272752057300D16C9E /* Project object */;
 }

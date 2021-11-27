@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "AOCLib",
+        "repositoryURL": "https://github.com/richardpineo/AOCLib",
+        "state": {
+          "branch": "main",
+          "revision": "5df53c7c1dc7dcf71bae01d44af3ffe171b0b7d0",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

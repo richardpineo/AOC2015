@@ -1,17 +1,14 @@
-//
-//  AOC2015App.swift
-//  AOC2015
-//
-//  Created by Richard Pineo on 11/26/21.
-//
 
+import AOCLib
 import SwiftUI
 
 @main
 struct AOC2015App: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
+	let puzzles = Puzzles2015()
+	var body: some Scene {
+		WindowGroup {
+			MainView(repo: puzzles)
+				.environmentObject(PuzzleProcessing.application(puzzles: puzzles.puzzles))
+		}
+	}
 }
