@@ -12,8 +12,6 @@
 		BFE871372752057400D16C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE871362752057400D16C9E /* Assets.xcassets */; };
 		BFE8713A2752057400D16C9E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE871392752057400D16C9E /* Preview Assets.xcassets */; };
 		BFE871442752057400D16C9E /* AOC2015Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE871432752057400D16C9E /* AOC2015Tests.swift */; };
-		BFE8714E2752057400D16C9E /* AOC2015UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE8714D2752057400D16C9E /* AOC2015UITests.swift */; };
-		BFE871502752057400D16C9E /* AOC2015UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE8714F2752057400D16C9E /* AOC2015UITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +40,6 @@
 		BFE8713F2752057400D16C9E /* AOC2015Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AOC2015Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE871432752057400D16C9E /* AOC2015Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AOC2015Tests.swift; sourceTree = "<group>"; };
 		BFE871492752057400D16C9E /* AOC2015UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AOC2015UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFE8714D2752057400D16C9E /* AOC2015UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AOC2015UITests.swift; sourceTree = "<group>"; };
-		BFE8714F2752057400D16C9E /* AOC2015UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AOC2015UITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +72,6 @@
 			children = (
 				BFE871312752057300D16C9E /* AOC2015 */,
 				BFE871422752057400D16C9E /* AOC2015Tests */,
-				BFE8714C2752057400D16C9E /* AOC2015UITests */,
 				BFE871302752057300D16C9E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,15 +111,6 @@
 				BFE871432752057400D16C9E /* AOC2015Tests.swift */,
 			);
 			path = AOC2015Tests;
-			sourceTree = "<group>";
-		};
-		BFE8714C2752057400D16C9E /* AOC2015UITests */ = {
-			isa = PBXGroup;
-			children = (
-				BFE8714D2752057400D16C9E /* AOC2015UITests.swift */,
-				BFE8714F2752057400D16C9E /* AOC2015UITestsLaunchTests.swift */,
-			);
-			path = AOC2015UITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,8 +260,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFE871502752057400D16C9E /* AOC2015UITestsLaunchTests.swift in Sources */,
-				BFE8714E2752057400D16C9E /* AOC2015UITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,7 +420,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -465,7 +449,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
