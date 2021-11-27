@@ -26,8 +26,7 @@ class Solve3: PuzzleSolver {
 		guard let file = FileHelper.load("Input3") else {
 			return ""
 		}
-		// return solveB(input: file).description
-		return ""
+		return solveB(input: file[0]).description
 	}
 
 	func solveA(input: String) -> Int {
@@ -58,7 +57,19 @@ class Solve3: PuzzleSolver {
 	}
 	
 	func solveB(input: String) -> Int {
-		0
+		var locs: [Position2D] = [.origin]
+		var currentSanta = locs[0]
+		var currentRobo = locs[0]
+		
+		for i in stride(from: 0, to: input.count, by: 2) {
+			currentSanta = currentSanta.offset(offset(from: input.character(at: i)))
+			currentRobo = currentRobo.offset(offset(from: input.character(at: i + 1)))
+
+			locs.append(currentSanta)
+			locs.append(currentRobo)
+		}
+		let grouping = Dictionary(grouping: locs, by: \.displayString)
+		return grouping.count
 	}
 
 	struct Example {
@@ -73,5 +84,8 @@ class Solve3: PuzzleSolver {
 	]
 
 	let examplesB: [Example] = [
+		.init(input: "^v", answer: 3),
+		.init(input: "^>v<", answer: 3),
+		.init(input: "^v^v^v^v^v", answer: 11),
 	]
 }
