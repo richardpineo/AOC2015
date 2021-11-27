@@ -66,8 +66,9 @@ class Solve1: PuzzleSolver {
 		.init(input: ")())())", answer: -3),
 	]
 	
-
 	let examplesB: [Example] = [
 		.init(input: ")", answer: 1),
 		.init(input: "()())", answer: 5)
-	]}
+	]
+	
+}
