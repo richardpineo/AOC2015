@@ -28,10 +28,15 @@ class Solve4: PuzzleSolver {
 	func solveA(input: String) -> Int {
 		let max = 999999999
 		for value in 0...max {
-			let full = "\(input)\(value)"
-			if full.md5.starts(with: "00000") {
-				return value
+			let full = "\(input)\(value)".md5Data
+			
+			var found = false
+			full.withUnsafeBytes { bytes in
+				found = bytes[0] == 0 && bytes[1] == 0 && bytes[2] < 16
 			}
+			if found {
+				return value
+			}			 
 		}
 		return -666
 	}
