@@ -3,9 +3,9 @@ import AOCLib
 import Foundation
 import XCTest
 
-class Test2020: XCTestCase {
+class Test2015: XCTestCase {
 	func testOne() throws {
-		testOne(Solve1())
+		testOne(Solve2())
 	}
 
 	func testAll() throws {

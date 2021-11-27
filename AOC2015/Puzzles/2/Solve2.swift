@@ -23,7 +23,10 @@ class Solve2: PuzzleSolver {
 	}
 
 	func solveB() -> String {
-		""
+		guard let file = FileHelper.load("Input2") else {
+			return ""
+		}
+		return solveB(input: file).description
 	}
 
 	func solveA(input: [String]) -> Int {
@@ -35,7 +38,11 @@ class Solve2: PuzzleSolver {
 	}
 	
 	func solveB(input: [String]) -> Int {
-		0
+		let ribbon = input.compactMap { $0.isEmpty ? nil : $0 }.reduce(0) {
+			let box = loadBox(input: $1)
+			return $0 + box.ribbon
+		}
+		return ribbon
 	}
 	
 	func loadBox(input: String) -> Box {
@@ -54,6 +61,18 @@ class Solve2: PuzzleSolver {
 			let s3 = l * h
 			return (s1 + s2 + s3) * 2 + min(s1, min(s2, s3))
 		}
+		
+		private var smallestPerimeter: Int {
+			let p1 = l + w
+			let p2 = w + h
+			let p3 = l + h
+			let smallest = min(p1, min(p2, p3))
+			return smallest * 2
+		}
+		
+		var ribbon: Int {
+			smallestPerimeter + l * w * h
+		}
 	}
 
 	struct Example {
@@ -67,5 +86,7 @@ class Solve2: PuzzleSolver {
 	]
 
 	let examplesB: [Example] = [
-	]	
+		.init(input: ["2x3x4"], answer: 34),
+		.init(input: ["1x1x10"], answer: 14),
+	]
 }
