@@ -13,7 +13,7 @@ class Solve3: PuzzleSolver {
 	}
 
 	var answerA = "2572"
-	var answerB = ""
+	var answerB = "2631"
 
 	func solveA() -> String {
 		guard let file = FileHelper.load("Input3") else {
