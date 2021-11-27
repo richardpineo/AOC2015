@@ -1,6 +1,6 @@
 
-import AOCLib
 import SwiftUI
+import AOCLib
 
 class Puzzles2015: PuzzlesRepo {
 	init() {

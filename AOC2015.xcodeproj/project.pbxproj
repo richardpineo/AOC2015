@@ -11,7 +11,6 @@
 		BFE871372752057400D16C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE871362752057400D16C9E /* Assets.xcassets */; };
 		BFE8713A2752057400D16C9E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE871392752057400D16C9E /* Preview Assets.xcassets */; };
 		BFE871442752057400D16C9E /* AOC2015Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE871432752057400D16C9E /* AOC2015Tests.swift */; };
-		BFE8715E275206B900D16C9E /* AOCLib in Frameworks */ = {isa = PBXBuildFile; productRef = BFE8715D275206B900D16C9E /* AOCLib */; };
 		BFE87160275206CC00D16C9E /* Puzzles2015.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE8715F275206CC00D16C9E /* Puzzles2015.swift */; };
 		BFE871632752071B00D16C9E /* Solve1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE871622752071B00D16C9E /* Solve1.swift */; };
 		BFE87166275207BB00D16C9E /* Input1.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFE87165275207BB00D16C9E /* Input1.txt */; };
@@ -20,6 +19,7 @@
 		BFE8716B2752A91000D16C9E /* Solve2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE8716A2752A91000D16C9E /* Solve2.swift */; };
 		BFE8716D2752A93500D16C9E /* Input2.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFE8716C2752A93500D16C9E /* Input2.txt */; };
 		BFE8716E2752A9D300D16C9E /* Solve2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE8716A2752A91000D16C9E /* Solve2.swift */; };
+		BFE871772752AEBF00D16C9E /* AOCLib in Frameworks */ = {isa = PBXBuildFile; productRef = BFE871762752AEBF00D16C9E /* AOCLib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +44,7 @@
 		BFE87165275207BB00D16C9E /* Input1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Input1.txt; sourceTree = "<group>"; };
 		BFE8716A2752A91000D16C9E /* Solve2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solve2.swift; sourceTree = "<group>"; };
 		BFE8716C2752A93500D16C9E /* Input2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Input2.txt; sourceTree = "<group>"; };
+		BFE871742752AEA300D16C9E /* AOCLib */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AOCLib; path = ../AOCLib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFE8715E275206B900D16C9E /* AOCLib in Frameworks */,
+				BFE871772752AEBF00D16C9E /* AOCLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,9 +69,11 @@
 		BFE871262752057300D16C9E = {
 			isa = PBXGroup;
 			children = (
+				BFE871732752AEA300D16C9E /* Packages */,
 				BFE871312752057300D16C9E /* AOC2015 */,
 				BFE871422752057400D16C9E /* AOC2015Tests */,
 				BFE871302752057300D16C9E /* Products */,
+				BFE871752752AEBF00D16C9E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,6 +141,21 @@
 			path = 2;
 			sourceTree = "<group>";
 		};
+		BFE871732752AEA300D16C9E /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				BFE871742752AEA300D16C9E /* AOCLib */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		BFE871752752AEBF00D16C9E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -155,7 +173,7 @@
 			);
 			name = AOC2015;
 			packageProductDependencies = (
-				BFE8715D275206B900D16C9E /* AOCLib */,
+				BFE871762752AEBF00D16C9E /* AOCLib */,
 			);
 			productName = AOC2015;
 			productReference = BFE8712F2752057300D16C9E /* AOC2015.app */;
@@ -208,7 +226,6 @@
 			);
 			mainGroup = BFE871262752057300D16C9E;
 			packageReferences = (
-				BFE8715C275206B900D16C9E /* XCRemoteSwiftPackageReference "AOCLib" */,
 			);
 			productRefGroup = BFE871302752057300D16C9E /* Products */;
 			projectDirPath = "";
@@ -531,21 +548,9 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		BFE8715C275206B900D16C9E /* XCRemoteSwiftPackageReference "AOCLib" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/richardpineo/AOCLib";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		BFE8715D275206B900D16C9E /* AOCLib */ = {
+		BFE871762752AEBF00D16C9E /* AOCLib */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BFE8715C275206B900D16C9E /* XCRemoteSwiftPackageReference "AOCLib" */;
 			productName = AOCLib;
 		};
 /* End XCSwiftPackageProductDependency section */
