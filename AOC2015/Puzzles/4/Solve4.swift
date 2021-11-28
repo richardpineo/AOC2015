@@ -11,7 +11,7 @@ class Solve4: PuzzleSolver {
 	func solveBExamples() -> Bool {
 		examplesB.allSatisfy { solve(input: $0.input, pred: firstSixBytesZero) == $0.answer }
 	}
-	
+
 	static let input = "ckczppom"
 
 	var answerA = "117946"
@@ -20,32 +20,33 @@ class Solve4: PuzzleSolver {
 	func firstFiveBytesZero(bytes: UnsafeRawBufferPointer) -> Bool {
 		bytes[0] == 0 && bytes[1] == 0 && bytes[2] < 16
 	}
+
 	func firstSixBytesZero(bytes: UnsafeRawBufferPointer) -> Bool {
 		bytes[0] == 0 && bytes[1] == 0 && bytes[2] == 0
 	}
 
 	func solveA() -> String {
-		return solve(input: Self.input, pred: firstFiveBytesZero).description
+		solve(input: Self.input, pred: firstFiveBytesZero).description
 	}
 
 	func solveB() -> String {
-		return solve(input: Self.input, pred: firstSixBytesZero).description
+		solve(input: Self.input, pred: firstSixBytesZero).description
 	}
-	
+
 	typealias Passes = (UnsafeRawBufferPointer) -> Bool
 
 	func solve(input: String, pred: Passes) -> Int {
-		let max = 999999999
-		for value in 0...max {
+		let max = 999_999_999
+		for value in 0 ... max {
 			let full = "\(input)\(value)".md5Data
-			
+
 			var found = false
 			full.withUnsafeBytes { bytes in
 				found = pred(bytes)
 			}
 			if found {
 				return value
-			}			 
+			}
 		}
 		return -666
 	}
@@ -56,8 +57,8 @@ class Solve4: PuzzleSolver {
 	}
 
 	let examplesA: [Example] = [
-		.init(input: "abcdef", answer: 609043),
-		.init(input: "pqrstuv", answer: 1048970),
+		.init(input: "abcdef", answer: 609_043),
+		.init(input: "pqrstuv", answer: 1_048_970),
 	]
 
 	let examplesB: [Example] = [

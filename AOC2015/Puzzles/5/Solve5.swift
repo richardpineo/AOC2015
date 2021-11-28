@@ -28,75 +28,77 @@ class Solve5: PuzzleSolver {
 		}
 		return solveB(input: file.filter { !$0.isEmpty }).description
 	}
-	
+
 	func vowels(_ s: String) -> Int {
 		s.filter { "aeiou".contains($0) }.count
 	}
-	
+
 	func containsDouble(_ s: String) -> Bool {
-		for i in 0..<s.count-1 {
+		for i in 0 ..< s.count - 1 {
 			if s.character(at: i) == s.character(at: i + 1) {
 				return true
 			}
 		}
 		return false
 	}
-	
+
 	func isNice(_ s: String) -> Bool {
 		if s.contains("ab") ||
 			s.contains("cd") ||
 			s.contains("pq") ||
-			s.contains("xy") {
+			s.contains("xy")
+		{
 			return false
 		}
-	
+
 		if vowels(s) < 3 {
 			return false
 		}
-		
+
 		if !containsDouble(s) {
 			return false
 		}
-		
+
 		return true
 	}
-	
+
 	func containsStepover(_ s: String) -> Bool {
-		for i in 0..<s.count-2 {
+		for i in 0 ..< s.count - 2 {
 			if s.character(at: i) == s.character(at: i + 2) {
 				return true
 			}
 		}
 		return false
 	}
-	
+
 	func containsRepeatedPair(_ s: String) -> Bool {
-		for i in 0..<s.count-2 {
-			for j in (i+2)..<s.count-1 {
-				if s.character(at: i) == s.character(at: j) &&
-					s.character(at: i + 1) == s.character(at: j + 1){
+		for i in 0 ..< s.count - 2 {
+			for j in (i + 2) ..< s.count - 1 {
+				if s.character(at: i) == s.character(at: j),
+				   s.character(at: i + 1) == s.character(at: j + 1)
+				{
 					return true
 				}
 			}
 		}
 		return false
 	}
-	
+
 	func isNicer(_ s: String) -> Bool {
 		if !containsStepover(s) {
 			return false
 		}
-		
+
 		if !containsRepeatedPair(s) {
 			return false
 		}
 		return true
 	}
-	
+
 	func solveA(input: [String]) -> Int {
 		input.filter { isNice($0) }.count
 	}
-	
+
 	func solveB(input: [String]) -> Int {
 		input.filter { isNicer($0) }.count
 	}

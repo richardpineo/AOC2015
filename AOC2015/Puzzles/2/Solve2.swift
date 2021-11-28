@@ -36,7 +36,7 @@ class Solve2: PuzzleSolver {
 		}
 		return paper
 	}
-	
+
 	func solveB(input: [String]) -> Int {
 		let ribbon = input.compactMap { $0.isEmpty ? nil : $0 }.reduce(0) {
 			let box = loadBox(input: $1)
@@ -44,24 +44,24 @@ class Solve2: PuzzleSolver {
 		}
 		return ribbon
 	}
-	
+
 	func loadBox(input: String) -> Box {
 		let dims = input.components(separatedBy: "x")
 		return .init(l: Int(dims[0])!, w: Int(dims[1])!, h: Int(dims[2])!)
 	}
-	
+
 	struct Box {
 		var l: Int
 		var w: Int
 		var h: Int
-		
+
 		var paper: Int {
 			let s1 = l * w
 			let s2 = w * h
 			let s3 = l * h
 			return (s1 + s2 + s3) * 2 + min(s1, min(s2, s3))
 		}
-		
+
 		private var smallestPerimeter: Int {
 			let p1 = l + w
 			let p2 = w + h
@@ -69,7 +69,7 @@ class Solve2: PuzzleSolver {
 			let smallest = min(p1, min(p2, p3))
 			return smallest * 2
 		}
-		
+
 		var ribbon: Int {
 			smallestPerimeter + l * w * h
 		}

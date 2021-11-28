@@ -36,11 +36,11 @@ class Solve3: PuzzleSolver {
 			current = current.offset(offset(from: $0))
 			locs.append(current)
 		}
-		
+
 		let grouping = Dictionary(grouping: locs, by: \.displayString)
 		return grouping.count
 	}
-	
+
 	func offset(from: String.Element) -> Position2D {
 		switch from {
 		case "^":
@@ -55,12 +55,12 @@ class Solve3: PuzzleSolver {
 			return .origin
 		}
 	}
-	
+
 	func solveB(input: String) -> Int {
 		var locs: [Position2D] = [.origin]
 		var currentSanta = locs[0]
 		var currentRobo = locs[0]
-		
+
 		for i in stride(from: 0, to: input.count, by: 2) {
 			currentSanta = currentSanta.offset(offset(from: input.character(at: i)))
 			currentRobo = currentRobo.offset(offset(from: input.character(at: i + 1)))

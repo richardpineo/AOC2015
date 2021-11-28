@@ -26,13 +26,13 @@ class Solve1: PuzzleSolver {
 
 	private let upDog: String.Element = "("
 	private let downDog: String.Element = ")"
-	
+
 	func solveA(input: String) -> Int {
-		let up = input.filter { $0 == upDog}.count
-		let down = input.filter { $0 == downDog}.count
+		let up = input.filter { $0 == upDog }.count
+		let down = input.filter { $0 == downDog }.count
 		return up - down
 	}
-	
+
 	func solveB(input: String) -> Int {
 		var floor = 0
 		let pos = input.firstIndex {
@@ -65,10 +65,9 @@ class Solve1: PuzzleSolver {
 		.init(input: ")))", answer: -3),
 		.init(input: ")())())", answer: -3),
 	]
-	
+
 	let examplesB: [Example] = [
 		.init(input: ")", answer: 1),
-		.init(input: "()())", answer: 5)
+		.init(input: "()())", answer: 5),
 	]
-	
 }
