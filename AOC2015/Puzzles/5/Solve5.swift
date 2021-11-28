@@ -13,7 +13,7 @@ class Solve5: PuzzleSolver {
 	}
 
 	var answerA = "258"
-	var answerB = ""
+	var answerB = "53"
 
 	func solveA() -> String {
 		guard let file = FileHelper.load("Input5") else {
@@ -26,7 +26,7 @@ class Solve5: PuzzleSolver {
 		guard let file = FileHelper.load("Input5") else {
 			return ""
 		}
-		return "" // solveB(input: file).description
+		return solveB(input: file.filter { !$0.isEmpty }).description
 	}
 	
 	func vowels(_ s: String) -> Int {
@@ -60,13 +60,45 @@ class Solve5: PuzzleSolver {
 		
 		return true
 	}
-
+	
+	func containsStepover(_ s: String) -> Bool {
+		for i in 0..<s.count-2 {
+			if s.character(at: i) == s.character(at: i + 2) {
+				return true
+			}
+		}
+		return false
+	}
+	
+	func containsRepeatedPair(_ s: String) -> Bool {
+		for i in 0..<s.count-2 {
+			for j in (i+2)..<s.count-1 {
+				if s.character(at: i) == s.character(at: j) &&
+					s.character(at: i + 1) == s.character(at: j + 1){
+					return true
+				}
+			}
+		}
+		return false
+	}
+	
+	func isNicer(_ s: String) -> Bool {
+		if !containsStepover(s) {
+			return false
+		}
+		
+		if !containsRepeatedPair(s) {
+			return false
+		}
+		return true
+	}
+	
 	func solveA(input: [String]) -> Int {
 		input.filter { isNice($0) }.count
 	}
 	
 	func solveB(input: [String]) -> Int {
-		0
+		input.filter { isNicer($0) }.count
 	}
 
 	struct Example {
@@ -83,5 +115,9 @@ class Solve5: PuzzleSolver {
 	]
 
 	let examplesB: [Example] = [
+		.init(input: "qjhvhtzxzqqjkmpb", answer: 1),
+		.init(input: "xxyxx", answer: 1),
+		.init(input: "uurcxstgmygtbstg", answer: 0),
+		.init(input: "ieodomkazucvgmuy", answer: 0),
 	]
 }
