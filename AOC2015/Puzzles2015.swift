@@ -13,6 +13,7 @@ class Puzzles2015: PuzzlesRepo {
 			Puzzle(year: year, id: 4, name: "The Ideal Stocking Stuffer") { Solve4() },
 			Puzzle(year: year, id: 5, name: "Doesn't He Have Intern-Elves For This?") { Solve5() },
 			Puzzle(year: year, id: 6, name: "Probably a Fire Hazard") { Solve6() },
+			Puzzle(year: year, id: 7, name: "Some Assembly Required") { Solve7() },
 		])
 	}
 

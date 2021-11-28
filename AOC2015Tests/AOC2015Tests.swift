@@ -5,7 +5,7 @@ import XCTest
 
 class Test2015: XCTestCase {
 	func testOne() throws {
-		testOne(Solve6())
+		testOne(Solve7())
 	}
 
 	func testAll() throws {
@@ -13,8 +13,7 @@ class Test2015: XCTestCase {
 
 		puzzles2015.puzzles.puzzles.forEach { puzzle in
 			print("Testing \(puzzle.id): \(puzzle.name)")
-			let solver = puzzle.solver
-			testOne(solver)
+			testOne(puzzle.solver)
 		}
 	}
 
