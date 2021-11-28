@@ -16,6 +16,7 @@ class Puzzles2015: PuzzlesRepo {
 			Puzzle(year: year, id: 7, name: "Some Assembly Required") { Solve7() },
 			Puzzle(year: year, id: 8, name: "Matchsticks") { Solve8() },
 			Puzzle(year: year, id: 9, name: "All in a Single Night") { Solve9() },
+			Puzzle(year: year, id: 10, name: "Elves Look, Elves Say") { Solve10() },
 		])
 	}
 
