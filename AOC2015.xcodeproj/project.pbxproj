@@ -12,6 +12,9 @@
 		BF3064A02752B8D500206989 /* Solve3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF30649D2752B4D000206989 /* Solve3.swift */; };
 		BF5819BC2752BD1700B70A2E /* Solve4.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5819BA2752BD1700B70A2E /* Solve4.swift */; };
 		BF5819BE2752BF0400B70A2E /* Solve4.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5819BA2752BD1700B70A2E /* Solve4.swift */; };
+		BFE243442752FFAC009FCD7B /* Solve5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE243432752FFAC009FCD7B /* Solve5.swift */; };
+		BFE243462753007E009FCD7B /* Input5.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFE243452753007E009FCD7B /* Input5.txt */; };
+		BFE24347275301D5009FCD7B /* Solve5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE243432752FFAC009FCD7B /* Solve5.swift */; };
 		BFE871332752057300D16C9E /* AOC2015App.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE871322752057300D16C9E /* AOC2015App.swift */; };
 		BFE871372752057400D16C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE871362752057400D16C9E /* Assets.xcassets */; };
 		BFE8713A2752057400D16C9E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE871392752057400D16C9E /* Preview Assets.xcassets */; };
@@ -41,6 +44,8 @@
 		BF30649C2752B4D000206989 /* Input3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Input3.txt; sourceTree = "<group>"; };
 		BF30649D2752B4D000206989 /* Solve3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solve3.swift; sourceTree = "<group>"; };
 		BF5819BA2752BD1700B70A2E /* Solve4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solve4.swift; sourceTree = "<group>"; };
+		BFE243432752FFAC009FCD7B /* Solve5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solve5.swift; sourceTree = "<group>"; };
+		BFE243452753007E009FCD7B /* Input5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Input5.txt; sourceTree = "<group>"; };
 		BFE8712F2752057300D16C9E /* AOC2015.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AOC2015.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE871322752057300D16C9E /* AOC2015App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AOC2015App.swift; sourceTree = "<group>"; };
 		BFE871362752057400D16C9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -89,6 +94,15 @@
 				BF5819BA2752BD1700B70A2E /* Solve4.swift */,
 			);
 			path = 4;
+			sourceTree = "<group>";
+		};
+		BFE243422752FFAC009FCD7B /* 5 */ = {
+			isa = PBXGroup;
+			children = (
+				BFE243452753007E009FCD7B /* Input5.txt */,
+				BFE243432752FFAC009FCD7B /* Solve5.swift */,
+			);
+			path = 5;
 			sourceTree = "<group>";
 		};
 		BFE871262752057300D16C9E = {
@@ -142,6 +156,7 @@
 		BFE871612752070700D16C9E /* Puzzles */ = {
 			isa = PBXGroup;
 			children = (
+				BFE243422752FFAC009FCD7B /* 5 */,
 				BF5819B92752BD1700B70A2E /* 4 */,
 				BF30649B2752B4D000206989 /* 3 */,
 				BFE871692752A90200D16C9E /* 2 */,
@@ -272,6 +287,7 @@
 				BFE8713A2752057400D16C9E /* Preview Assets.xcassets in Resources */,
 				BFE87166275207BB00D16C9E /* Input1.txt in Resources */,
 				BFE8716D2752A93500D16C9E /* Input2.txt in Resources */,
+				BFE243462753007E009FCD7B /* Input5.txt in Resources */,
 				BF30649E2752B4D000206989 /* Input3.txt in Resources */,
 				BFE871372752057400D16C9E /* Assets.xcassets in Resources */,
 			);
@@ -292,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF30649F2752B4D000206989 /* Solve3.swift in Sources */,
+				BFE243442752FFAC009FCD7B /* Solve5.swift in Sources */,
 				BFE87160275206CC00D16C9E /* Puzzles2015.swift in Sources */,
 				BF5819BC2752BD1700B70A2E /* Solve4.swift in Sources */,
 				BFE871632752071B00D16C9E /* Solve1.swift in Sources */,
@@ -305,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF3064A02752B8D500206989 /* Solve3.swift in Sources */,
+				BFE24347275301D5009FCD7B /* Solve5.swift in Sources */,
 				BFE871442752057400D16C9E /* AOC2015Tests.swift in Sources */,
 				BF5819BE2752BF0400B70A2E /* Solve4.swift in Sources */,
 				BFE871672752087100D16C9E /* Puzzles2015.swift in Sources */,
