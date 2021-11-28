@@ -14,12 +14,16 @@ class Solve8: PuzzleSolver {
 	}
 
 	func solveBExamples() -> Bool {
-	//	examplesB.allSatisfy { solveB(input: $0.input) == $0.answer }
-		true
+		if !examplesB.allSatisfy({ encodedCharacters($0.input) == $0.answer }) {
+			return false
+		}
+		let input = examplesB.map { $0.input }
+		let answer = solveB(input)
+		return answer == 19
 	}
 
-	var answerA = ""
-	var answerB = ""
+	var answerA = "1371"
+	var answerB = "2117"
 
 	func solveA() -> String {
 		guard let file = FileHelper.load("Input8") else {
@@ -32,19 +36,21 @@ class Solve8: PuzzleSolver {
 		guard let file = FileHelper.load("Input8") else {
 			return ""
 		}
-		return solveB(input: file).description
+		return solveB(file.filter { !$0.isEmpty }).description
 	}
 
 	func solveA(_ input: [String]) -> Int {
 		let memoryCounts = input.map { memoryCharacters($0)}
 		let totalMemory = memoryCounts.reduce(0) { $0 + $1 }
-		// 2 for the wrapping quotes that got skimmed off
-		let totalChars = input.reduce(0) { $0 + $1.count + 2 }
+		let totalChars = input.reduce(0) { $0 + $1.count }
 		return totalChars - totalMemory
 	}
 
-	func solveB(input: [String]) -> Int {
-		0
+	func solveB(_ input: [String]) -> Int {
+		let encodedCounts = input.map { encodedCharacters($0)}
+		let totalEncoded = encodedCounts.reduce(0) { $0 + $1 }
+		let totalChars = input.reduce(0) { $0 + $1.count }
+		return totalEncoded - totalChars
 	}
 
 	func memoryCharacters(_ s: String) -> Int {
@@ -56,9 +62,7 @@ class Solve8: PuzzleSolver {
 			} else {
 				let next = chars.dequeue()!
 				switch next {
-				case "\\":
-					fallthrough
-				case "\"":
+				case "\"", "\\":
 					count += 1
 					break
 				default:
@@ -69,21 +73,39 @@ class Solve8: PuzzleSolver {
 				
 			}
 		}
-		return count
+		return count - 2
 	}
 
+	func encodedCharacters(_ s: String) -> Int {
+		var chars = Queue(from: Array(s))
+		var count = 0
+		while let c = chars.dequeue() {
+			switch c {
+			case "\"", "\\":
+				count += 2
+			default:
+				count += 1
+			}
+		}
+		return count + 2
+	}
+	
 	struct Example {
 		var input: String
 		var answer: Int
 	}
 	
 	let examplesA: [Example] = [
-		.init(input: #""#, answer: 0),
-		.init(input: #"abc"#, answer: 3),
-		.init(input: #"aaa\"aaa"#, answer: 7),
-		.init(input: #"\x27"#, answer: 1),
+		.init(input: #""""#, answer: 0),
+		.init(input: #""abc""#, answer: 3),
+		.init(input: #""aaa\"aaa""#, answer: 7),
+		.init(input: #""\x27""#, answer: 1),
 	]
 
 	let examplesB: [Example] = [
+		.init(input: #""""#, answer: 6),
+		.init(input: #""abc""#, answer: 9),
+		.init(input: #""aaa\"aaa""#, answer: 16),
+		.init(input: #""\x27""#, answer: 11),
 	]
 }

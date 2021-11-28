@@ -1,9 +1,10 @@
 # Don't muck with Pods or generated files
---exclude **/Pods, **/Generated
+# Couldn't get it to work on problem 8
+--exclude **/Pods, **/Generated, AOC2015/Puzzles/8/Solve8.swift
 
 # Because spaces are for heathens
 --indent tab
 --tabwidth 4
 
 # Tell swiftformat what version we are using
---swiftversion 5.2.4
+--swiftversion 5.5
