@@ -35,30 +35,55 @@ class Solve6: PuzzleSolver {
 		case turnOff
 	}
 	
-	struct Command {
-		var verb: Verb
-		var start: Position2D
-		var end: Position2D
+	class Lights {
+		private let numCols = 1000
 		
-		func apply( lights: inout Set<Position2D>) {
-			for x in start.x...end.x {
-				for y in start.y...end.y {
+		init() {
+			let maxPos = Position2D(999,999)
+			states = [Bool](repeating: false, count: maxPos.arrayIndex(numCols: numCols))
+		}
+		
+		func apply(_ command: Command) {
+			for x in command.start.x...command.end.x {
+				for y in command.start.y...command.end.y {
 					let cur = Position2D(x, y)
-					switch verb {
+					switch command.verb {
 					case .turnOn:
-						lights.insert(cur)
+						setAt(cur, true)
 					case .turnOff:
-						lights.remove(cur)
+						setAt(cur, false)
 					case .toggle:
-						if lights.contains(cur) {
-							lights.remove(cur)
-						} else {
-							lights.insert(cur)
-						}
+						toggleAt(cur)
 					}
 				}
 			}
 		}
+		
+		func setAt(_ pos: Position2D, _ val: Bool) {
+			states[pos.arrayIndex(numCols: numCols)] = val
+		}
+		
+		func getAt(_ pos: Position2D) -> Bool{
+			states[pos.arrayIndex(numCols: numCols)]
+		}
+		
+		func toggleAt(_ pos: Position2D) {
+			setAt(pos, !getAt(pos))
+		}
+		
+		var lightCount: Int {
+			states.reduce(0) {
+				return $0 + ($1 ? 1 : 0)
+			}
+		}
+
+		private var states: [Bool]
+	}
+	
+	struct Command {
+		var verb: Verb
+		var start: Position2D
+		var end: Position2D
 	}
 	
 	func parsePosition(_ s: String) -> Position2D {
@@ -86,11 +111,9 @@ class Solve6: PuzzleSolver {
 
 	func solveA(input: [String]) -> Int {
 		let commands = input.compactMap { parse($0) }
-		var lights = Set<Position2D>()
-		commands.forEach {
-			$0.apply(lights: &lights)
-		}
-		return lights.count
+		var lights = Lights()
+		commands.forEach { lights.apply($0) }
+		return lights.lightCount
 	}
 
 	func solveB(input: [String]) -> Int {
