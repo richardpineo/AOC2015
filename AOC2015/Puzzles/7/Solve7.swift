@@ -8,23 +8,23 @@ class Solve7: PuzzleSolver {
 	typealias WireMap = [String: WireVal]
 
 	private let exampleInput = """
-		123 -> x
-		456 -> y
-		x AND y -> d
-		x OR y -> e
-		x LSHIFT 2 -> f
-		y RSHIFT 2 -> g
-		NOT x -> h
-		NOT y -> i
-		""".components(separatedBy: "\n")
-	
+	123 -> x
+	456 -> y
+	x AND y -> d
+	x OR y -> e
+	x LSHIFT 2 -> f
+	y RSHIFT 2 -> g
+	NOT x -> h
+	NOT y -> i
+	""".components(separatedBy: "\n")
+
 	func solveAExamples() -> Bool {
 		print(solveA(input: exampleInput))
 		return true
 	}
 
 	func solveBExamples() -> Bool {
-		return true
+		true
 	}
 
 	var answerA = "3176"
