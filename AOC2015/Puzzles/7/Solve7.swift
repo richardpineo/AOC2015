@@ -7,8 +7,7 @@ class Solve7: PuzzleSolver {
 	typealias WireVal = UInt16
 	typealias WireMap = [String: WireVal]
 
-	func solveAExamples() -> Bool {
-		let src = """
+	private let exampleInput = """
 		123 -> x
 		456 -> y
 		x AND y -> d
@@ -17,17 +16,19 @@ class Solve7: PuzzleSolver {
 		y RSHIFT 2 -> g
 		NOT x -> h
 		NOT y -> i
-		"""
-		print(solveA(input: src.components(separatedBy: "\n")))
+		""".components(separatedBy: "\n")
+	
+	func solveAExamples() -> Bool {
+		print(solveA(input: exampleInput))
 		return true
 	}
 
 	func solveBExamples() -> Bool {
-		true
+		return true
 	}
 
 	var answerA = "3176"
-	var answerB = ""
+	var answerB = "14710"
 
 	func solveA() -> String {
 		guard let file = FileHelper.load("Input7") else {
@@ -41,10 +42,11 @@ class Solve7: PuzzleSolver {
 		guard let file = FileHelper.load("Input7") else {
 			return ""
 		}
-		return solveB(input: file).description
+		let wireMap = solveB(input: file.filter { !$0.isEmpty })
+		return wireMap["a"]?.description ?? ""
 	}
 
-	enum Source {
+	enum Source: Equatable {
 		case constant(WireVal)
 		case wire(String)
 
@@ -157,9 +159,9 @@ class Solve7: PuzzleSolver {
 		}
 	}
 
-	func solveA(input: [String]) -> [String: WireVal] {
-		var commands = Queue(from: input.map { Command.parse($0) })
+	func solve(_ commands: [Command]) -> WireMap {
 		var wireMap: [String: WireVal] = [:]
+		var commands = Queue(from: commands)
 		while let command = commands.dequeue() {
 			if !command.evaluate(&wireMap) {
 				commands.enqueue(command)
@@ -168,7 +170,21 @@ class Solve7: PuzzleSolver {
 		return wireMap
 	}
 
-	func solveB(input _: [String]) -> WireVal {
-		0
+	func solveA(input: [String]) -> [String: WireVal] {
+		let commands = input.map { Command.parse($0) }
+		return solve(commands)
+	}
+
+	func solveB(input: [String]) -> [String: WireVal] {
+		let overrideVal: WireVal = 3176
+		var commands = input.map { Command.parse($0) }
+		let overrideIndex = commands.firstIndex {
+			if case let .copy(_, dest) = $0 {
+				return dest == "b"
+			}
+			return false
+		}
+		commands[overrideIndex!] = .copy(Source.constant(overrideVal), "b")
+		return solve(commands)
 	}
 }

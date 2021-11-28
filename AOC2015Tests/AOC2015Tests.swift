@@ -18,10 +18,12 @@ class Test2015: XCTestCase {
 	}
 
 	func testOne(_ solver: PuzzleSolver) {
-		XCTAssertTrue(solver.solveAExamples())
-		XCTAssertTrue(solver.solveBExamples())
+		XCTAssertTrue(solver.solveAExamples(), "Example A failed")
+		XCTAssertTrue(solver.solveBExamples(), "Example B failed")
 
-		XCTAssertEqual(solver.solveA(), solver.answerA)
-		XCTAssertEqual(solver.solveB(), solver.answerB)
+		let a = solver.solveA()
+		XCTAssertEqual(a, solver.answerA, "Part A failed. Expected: \(solver.answerA), Got: \(a)")
+		let b = solver.solveB()
+		XCTAssertEqual(b, solver.answerB, "Part B failed. Expected: \(solver.answerB), Got: \(b)")
 	}
 }
