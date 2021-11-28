@@ -5,15 +5,15 @@ import SwiftUI
 
 class Solve9: PuzzleSolver {
 	func solveAExamples() -> Bool {
-		example.answer == solveA(example.input)
+		example.shortest == solveA(example.input)
 	}
 
 	func solveBExamples() -> Bool {
-		true
+		example.longest == solveB(example.input)
 	}
 
 	var answerA = "141"
-	var answerB = ""
+	var answerB = "736"
 
 	func solveA() -> String {
 		guard let file = FileHelper.load("Input9") else {
@@ -45,7 +45,7 @@ class Solve9: PuzzleSolver {
 		}
 	}
 
-	func solveA(_ input: [String]) -> Int {
+	func findDistances(_ input: [String]) -> [Int] {
 		let roads = input.map { Road.parse($0) }
 
 		// Find the unique cities
@@ -72,16 +72,23 @@ class Solve9: PuzzleSolver {
 			return d
 		}
 
-		return distances.min() ?? 0
+		return distances
 	}
 
-	func solveB(_: [String]) -> Int {
-		0
+	func solveA(_ input: [String]) -> Int {
+		let distances = findDistances(input)
+		return distances.min() ?? -666
+	}
+
+	func solveB(_ input: [String]) -> Int {
+		let distances = findDistances(input)
+		return distances.max() ?? -666
 	}
 
 	struct Example {
 		var input: [String]
-		var answer: Int
+		var shortest: Int
+		var longest: Int
 	}
 
 	let example: Example =
@@ -89,5 +96,5 @@ class Solve9: PuzzleSolver {
 			"London to Dublin = 464",
 			"London to Belfast = 518",
 			"Dublin to Belfast = 141",
-		], answer: 605)
+		], shortest: 605, longest: 982)
 }
