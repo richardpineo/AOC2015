@@ -13,7 +13,7 @@ class Solve6: PuzzleSolver {
 	}
 
 	var answerA = "569999"
-	var answerB = ""
+	var answerB = "17836115"
 
 	func solveA() -> String {
 		guard let file = FileHelper.load("Input6") else {
@@ -26,26 +26,26 @@ class Solve6: PuzzleSolver {
 		guard let file = FileHelper.load("Input6") else {
 			return ""
 		}
-		return "" // solveB(input: file.filter { !$0.isEmpty }).description
+		return solveB(input: file).description
 	}
-	
+
 	enum Verb {
 		case turnOn
 		case toggle
 		case turnOff
 	}
-	
+
 	class Lights {
 		private let numCols = 1000
-		
+
 		init() {
-			let maxPos = Position2D(999,999)
+			let maxPos = Position2D(999, 999)
 			states = [Bool](repeating: false, count: maxPos.arrayIndex(numCols: numCols))
 		}
-		
+
 		func apply(_ command: Command) {
-			for x in command.start.x...command.end.x {
-				for y in command.start.y...command.end.y {
+			for x in command.start.x ... command.end.x {
+				for y in command.start.y ... command.end.y {
 					let cur = Position2D(x, y)
 					switch command.verb {
 					case .turnOn:
@@ -58,48 +58,48 @@ class Solve6: PuzzleSolver {
 				}
 			}
 		}
-		
+
 		func setAt(_ pos: Position2D, _ val: Bool) {
 			states[pos.arrayIndex(numCols: numCols)] = val
 		}
-		
-		func getAt(_ pos: Position2D) -> Bool{
+
+		func getAt(_ pos: Position2D) -> Bool {
 			states[pos.arrayIndex(numCols: numCols)]
 		}
-		
+
 		func toggleAt(_ pos: Position2D) {
 			setAt(pos, !getAt(pos))
 		}
-		
+
 		var lightCount: Int {
 			states.reduce(0) {
-				return $0 + ($1 ? 1 : 0)
+				$0 + ($1 ? 1 : 0)
 			}
 		}
 
 		private var states: [Bool]
 	}
-	
+
 	struct Command {
 		var verb: Verb
 		var start: Position2D
 		var end: Position2D
 	}
-	
+
 	func parsePosition(_ s: String) -> Position2D {
 		let tokens = s.components(separatedBy: ",")
 		return .init(Int(tokens[0])!, Int(tokens[1])!)
 	}
-	
+
 	func parse(_ s: String) -> Command? {
 		if s.isEmpty {
 			return nil
 		}
 		let tokens = s.components(separatedBy: " ")
-		
-		let end = parsePosition(tokens[tokens.count-1])
-		let start = parsePosition(tokens[tokens.count-3])
-		
+
+		let end = parsePosition(tokens[tokens.count - 1])
+		let start = parsePosition(tokens[tokens.count - 3])
+
 		if tokens[0] == "toggle" {
 			return .init(verb: .toggle, start: start, end: end)
 		}
@@ -111,13 +111,58 @@ class Solve6: PuzzleSolver {
 
 	func solveA(input: [String]) -> Int {
 		let commands = input.compactMap { parse($0) }
-		var lights = Lights()
+		let lights = Lights()
 		commands.forEach { lights.apply($0) }
 		return lights.lightCount
 	}
 
+	class Lights2 {
+		private let numCols = 1000
+
+		init() {
+			let maxPos = Position2D(999, 999)
+			states = [Int](repeating: 0, count: maxPos.arrayIndex(numCols: numCols))
+		}
+
+		func apply(_ command: Command) {
+			for x in command.start.x ... command.end.x {
+				for y in command.start.y ... command.end.y {
+					let cur = Position2D(x, y)
+					switch command.verb {
+					case .turnOn:
+						increase(cur, 1)
+					case .turnOff:
+						decrease(cur, 1)
+					case .toggle:
+						increase(cur, 2)
+					}
+				}
+			}
+		}
+
+		func increase(_ pos: Position2D, _ val: Int) {
+			states[pos.arrayIndex(numCols: numCols)] += val
+		}
+
+		func decrease(_ pos: Position2D, _: Int) {
+			let index = pos.arrayIndex(numCols: numCols)
+			states[index] = max(0, states[index] - 1)
+		}
+
+		var brightness: Int {
+			states.reduce(0) {
+				$0 + $1
+			}
+		}
+
+		private var states: [Int]
+	}
+
 	func solveB(input: [String]) -> Int {
-		0
+		let commands = input.compactMap { parse($0) }
+		let lights = Lights2()
+		commands.forEach { lights.apply($0) }
+		return lights.brightness
 	}
 
 	struct Example {
