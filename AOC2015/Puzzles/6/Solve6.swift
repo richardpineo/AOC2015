@@ -15,6 +15,9 @@ class Solve6: PuzzleSolver {
 	var answerA = "569999"
 	var answerB = "17836115"
 
+	var shouldTestA = false
+	var shouldTestB = false
+
 	func solveA() -> String {
 		guard let file = FileHelper.load("Input6") else {
 			return ""

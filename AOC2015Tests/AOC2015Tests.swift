@@ -5,25 +5,49 @@ import XCTest
 
 class Test2015: XCTestCase {
 	func testOne() throws {
-		testOne(Solve10())
+		testOne(Solve4())
 	}
 
 	func testAll() throws {
+		let totalTime = Stopwatch()
+
 		let puzzles2015 = Puzzles2015()
 
 		puzzles2015.puzzles.puzzles.forEach { puzzle in
 			print("Testing \(puzzle.id): \(puzzle.name)")
 			testOne(puzzle.solver)
 		}
+
+		print("⌚ Total time elapsed: \(totalTime.elapsed)")
 	}
 
 	func testOne(_ solver: PuzzleSolver) {
-		XCTAssertTrue(solver.solveAExamples(), "Example A failed")
-		XCTAssertTrue(solver.solveBExamples(), "Example B failed")
+		let totalTime = Stopwatch()
 
-		let a = solver.solveA()
-		XCTAssertEqual(a, solver.answerA, "Part A failed. Expected: \(solver.answerA), Got: \(a)")
-		let b = solver.solveB()
-		XCTAssertEqual(b, solver.answerB, "Part B failed. Expected: \(solver.answerB), Got: \(b)")
+		if solver.shouldTestExamplesA ?? true {
+			let stopwatch = Stopwatch()
+			XCTAssertTrue(solver.solveAExamples(), "Example A failed")
+			print("  ⌚ Examples A took \(stopwatch.elapsed)")
+		}
+		if solver.shouldTestExamplesB ?? true {
+			let stopwatch = Stopwatch()
+			XCTAssertTrue(solver.solveBExamples(), "Example B failed")
+			print("  ⌚ Examples B took \(stopwatch.elapsed)")
+		}
+
+		if solver.shouldTestA ?? true {
+			let stopwatch = Stopwatch()
+			let a = solver.solveA()
+			XCTAssertEqual(a, solver.answerA, "Part A failed. Expected: \(solver.answerA), Got: \(a)")
+			print("  ⌚ Part A took \(stopwatch.elapsed)")
+		}
+		if solver.shouldTestB ?? true {
+			let stopwatch = Stopwatch()
+			let b = solver.solveB()
+			XCTAssertEqual(b, solver.answerB, "Part B failed. Expected: \(solver.answerB), Got: \(b)")
+			print("  ⌚ Part B took \(stopwatch.elapsed)")
+		}
+
+		print("  ⌚ Total: \(totalTime.elapsed)")
 	}
 }

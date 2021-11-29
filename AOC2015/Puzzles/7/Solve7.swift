@@ -19,7 +19,7 @@ class Solve7: PuzzleSolver {
 	""".components(separatedBy: "\n")
 
 	func solveAExamples() -> Bool {
-		print(solveA(input: exampleInput))
+		_ = solveA(input: exampleInput)
 		return true
 	}
 

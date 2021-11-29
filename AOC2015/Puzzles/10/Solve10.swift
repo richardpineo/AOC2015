@@ -12,6 +12,8 @@ class Solve10: PuzzleSolver {
 		true
 	}
 
+	var shouldTestB = false
+
 	static let input = "1321131112"
 
 	var answerA = "492982"
@@ -24,22 +26,22 @@ class Solve10: PuzzleSolver {
 	func solveB() -> String {
 		solve(input: Self.input, cycles: 50).description
 	}
-	
+
 	func solve(input: String, cycles: Int) -> Int {
 		var c = input
-		for i in 0..<cycles {
-			print("Round \(i): \(c.count)")
-			c = lookAndSay( c)
+		for _ in 0 ..< cycles {
+			// print("Round \(i): \(c.count)")
+			c = lookAndSay(c)
 		}
 		return c.count
 	}
-	
+
 	func lookAndSay(_ oldStr: String) -> String {
-		var new = Array<String>()
+		var new = [String]()
 		let old = Array(oldStr)
 		var repDigit = old[0]
 		var numRep = 1
-		for i in 1..<old.count {
+		for i in 1 ..< old.count {
 			if repDigit == old[i] {
 				numRep += 1
 			} else {
@@ -53,7 +55,7 @@ class Solve10: PuzzleSolver {
 		new.append(repDigit.description)
 		return new.joined(separator: "")
 	}
-	
+
 	struct Example {
 		var input: String
 		var output: String

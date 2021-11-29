@@ -12,6 +12,9 @@ class Solve4: PuzzleSolver {
 		examplesB.allSatisfy { solve(input: $0.input, pred: firstSixBytesZero) == $0.answer }
 	}
 
+	var shouldTestExamplesA = false
+	var shouldTestB = false
+
 	static let input = "ckczppom"
 
 	var answerA = "117946"
