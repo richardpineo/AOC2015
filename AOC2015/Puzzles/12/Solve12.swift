@@ -13,7 +13,7 @@ class Solve12: PuzzleSolver {
 	}
 
 	var answerA = "191164"
-	var answerB = ""
+	var answerB = "87842"
 
 	func countArray(_ a: [Any], _ ignoreRed: Bool) -> Int {
 		a.reduce(0) {
