@@ -17,7 +17,7 @@ class Solve10: PuzzleSolver {
 	static let input = "1321131112"
 
 	var answerA = "492982"
-	var answerB = ""
+	var answerB = "6989950"
 
 	func solveA() -> String {
 		solve(input: Self.input, cycles: 40).description
