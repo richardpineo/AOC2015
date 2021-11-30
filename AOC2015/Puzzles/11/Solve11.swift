@@ -15,16 +15,21 @@ class Solve11: PuzzleSolver {
 	func solveBExamples() -> Bool {
 		true
 	}
+	
+	var shouldTestExamplesA = false
+	var shouldTestB = false
 
-	var answerA = ""
-	var answerB = ""
+	var answerA = "hxbxxyzz"
+	var answerB = "hxcaabcc"
 
+	let input = "hxbxwxba"
+	
 	func solveA() -> String {
-		incrementUntilValid("hxbxwxba")
+		incrementUntilValid(input)
 	}
 
 	func solveB() -> String {
-		""
+		incrementUntilValid(incrementUntilValid(input))
 	}
 	
 	func containsRun(_ pwd:String) -> Bool {
@@ -64,11 +69,9 @@ class Solve11: PuzzleSolver {
 	
 	func increment(_ c: Character) -> Character? {
 		let zVal = Character("z").asciiValue!
-
 		guard let ascii = c.asciiValue, ascii < zVal else {
 			return nil
 		}
-		
 		let maybe = Character(UnicodeScalar(ascii + 1))
 		return maybe.isASCII ? maybe : nil
 	}
