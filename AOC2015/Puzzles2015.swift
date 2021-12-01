@@ -19,6 +19,7 @@ class Puzzles2015: PuzzlesRepo {
 			Puzzle(year: year, id: 10, name: "Elves Look, Elves Say") { Solve10() },
 			Puzzle(year: year, id: 11, name: "Corporate Policy") { Solve11() },
 			Puzzle(year: year, id: 12, name: "JSAbacusFramework.io") { Solve12() },
+			Puzzle(year: year, id: 13, name: "Knights of the Dinner Table") { Solve13() },
 		])
 	}
 
