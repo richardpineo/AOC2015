@@ -15,8 +15,6 @@ class Solve14: PuzzleSolver {
 	var answerA = "2655"
 	var answerB = "1059"
 
-	var shouldTestB = false
-
 	func solveA() -> String {
 		solveA("Input14", seconds: 2503).description
 	}
