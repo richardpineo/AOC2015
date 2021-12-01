@@ -9,11 +9,11 @@ class Solve14: PuzzleSolver {
 	}
 
 	func solveBExamples() -> Bool {
-		true
+		689 == solveB("Example14", seconds: 1000)
 	}
 
 	var answerA = "2655"
-	var answerB = ""
+	var answerB = "1059"
 	
 	var shouldTestB = false
 
@@ -22,7 +22,7 @@ class Solve14: PuzzleSolver {
 	}
 
 	func solveB() -> String {
-		""
+		solveB("Input14", seconds: 2503).description
 	}
 	
 	struct Entry {
@@ -58,5 +58,27 @@ class Solve14: PuzzleSolver {
 		let distances = entries.map { $0.distanceAfter(seconds) }
 		
 		return distances.max()!
+	}
+	
+	func solveB(_ fileName: String, seconds: Int) -> Int {
+		guard let file = FileHelper.load(fileName) else {
+			return -666
+		}
+		let entries = file.filter { !$0.isEmpty }.map { parse($0) }
+
+		var scores = Dictionary<String, Int>()
+		entries.forEach { scores[$0.deer] = 0 }
+		
+		for i in 1...seconds {
+			let distances = entries.map { $0.distanceAfter(i) }
+			let max = distances.max()
+			entries.forEach {
+				if $0.distanceAfter(i) == max {
+					scores[$0.deer] = scores[$0.deer]! + 1
+				}
+			}
+		}
+		let winner = scores.map { $0.value }.max()
+		return winner!
 	}
 }
