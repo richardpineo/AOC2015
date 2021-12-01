@@ -5,7 +5,7 @@ import SwiftUI
 
 class Solve13: PuzzleSolver {
 	func solveAExamples() -> Bool {
-		330 == solveA("Example13")
+		solveA("Example13") == 330
 	}
 
 	func solveBExamples() -> Bool {
@@ -14,7 +14,7 @@ class Solve13: PuzzleSolver {
 
 	var answerA = "618"
 	var answerB = "601"
-	
+
 	var shouldTestB = false
 
 	func solveA() -> String {
@@ -26,10 +26,10 @@ class Solve13: PuzzleSolver {
 			return ""
 		}
 		var entries = file.filter { !$0.isEmpty }.map { parse($0) }
-		
+
 		var people = Set<String>()
-		entries.forEach { people.insert( $0.person ) }
-		
+		entries.forEach { people.insert($0.person) }
+
 		let me = "me"
 		people.insert(me)
 		people.forEach {
@@ -42,13 +42,13 @@ class Solve13: PuzzleSolver {
 		let happies = options.map { happiness($0, makeLookup(entries)) }
 		return happies.max()!.description
 	}
-	
+
 	struct Entry {
 		var person: String
 		var target: String
 		var happiness: Int
 	}
-	
+
 	func parse(_ s: String) -> Entry {
 		// David would gain 41 happiness units by sitting next to Carol.
 		let components = s.components(separatedBy: " ")
@@ -56,19 +56,19 @@ class Solve13: PuzzleSolver {
 		let value = Int(components[3])!
 		return .init(person: components[0], target: components[10].trimmingCharacters(in: ["."]), happiness: value * (isGain ? 1 : -1))
 	}
-	
-	typealias Lookup = Dictionary<String, Int>
+
+	typealias Lookup = [String: Int]
 	func makeLookup(_ entries: [Entry]) -> Lookup {
 		var lookup = Lookup()
 		entries.forEach { lookup[$0.person + $0.target] = $0.happiness }
 		return lookup
 	}
-	
+
 	func happiness(_ option: [String], _ lookup: Lookup) -> Int {
 		var score = 0
 		for i in 0 ..< option.count {
 			let person1 = option[i]
-			let person2 = option[i == option.count-1 ? 0 : i + 1]
+			let person2 = option[i == option.count - 1 ? 0 : i + 1]
 			score += lookup[person1 + person2]!
 			score += lookup[person2 + person1]!
 		}
@@ -80,12 +80,12 @@ class Solve13: PuzzleSolver {
 			return -666
 		}
 		let entries = file.filter { !$0.isEmpty }.map { parse($0) }
-		
+
 		var people = Set<String>()
-		entries.forEach { people.insert( $0.person ) }
+		entries.forEach { people.insert($0.person) }
 
 		let options = Combinatorics.permutations(Array(people))
-		
+
 		let happies = options.map { happiness($0, makeLookup(entries)) }
 		return happies.max()!
 	}
