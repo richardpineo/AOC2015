@@ -5,7 +5,7 @@ import SwiftUI
 
 class Solve15: PuzzleSolver {
 	func solveAExamples() -> Bool {
-		solveA("Example15") == 2 // 62842880
+		solveA("Example15") == 62_842_880
 	}
 
 	func solveBExamples() -> Bool {
@@ -32,6 +32,14 @@ class Solve15: PuzzleSolver {
 		var calories: Int
 	}
 
+	func tastiness(_ ingredients: [String: Int], _ props: [String: Entry]) -> Int {
+		let capacity = props.reduce(0) { $0 + $1.value.capacity * ingredients[$1.key]! }
+		let durability = props.reduce(0) { $0 + $1.value.durability * ingredients[$1.key]! }
+		let flavor = props.reduce(0) { $0 + $1.value.flavor * ingredients[$1.key]! }
+		let texture = props.reduce(0) { $0 + $1.value.texture * ingredients[$1.key]! }
+		return capacity * durability * flavor * texture
+	}
+
 	func parse(_ s: String) -> Entry {
 		// Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8
 		let components = s.components(separatedBy: [" ", ",", ":"])
@@ -41,7 +49,8 @@ class Solve15: PuzzleSolver {
 			durability: Int(components[6])!,
 			flavor: Int(components[9])!,
 			texture: Int(components[12])!,
-			calories: Int(components[15])!)
+			calories: Int(components[15])!
+		)
 	}
 
 	func solveA(_ fileName: String) -> Int {
@@ -49,11 +58,18 @@ class Solve15: PuzzleSolver {
 			return -666
 		}
 		let entries = file.filter { !$0.isEmpty }.map { parse($0) }
+		let ingredients = Dictionary(uniqueKeysWithValues: entries.map { ($0.ingredient, $0) })
 
-		return entries.count
+		let answers = Combinatorics.partition(100, 4)
+		print("total: \(answers.count)")
+
+		// var amts: Dictionary<String, Int> = ["Butterscotch": 44, "Cinnamon": 56]
+
+		// let t = tastiness(amts, ingredients)
+		return 0
 	}
 
-	func solveB(_ fileName: String, seconds: Int) -> Int {
+	func solveB(_ fileName: String, seconds _: Int) -> Int {
 		guard let file = FileHelper.load(fileName) else {
 			return -666
 		}
