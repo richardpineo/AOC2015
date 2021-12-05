@@ -5,28 +5,26 @@ import SwiftUI
 
 class Solve15: PuzzleSolver {
 	func solveAExamples() -> Bool {
-		solveAExamples() == 62_842_880
+		solveExamples(findMax: true) == 62_842_880
 	}
 
 	func solveBExamples() -> Bool {
-		true
+		solveExamples(findMax: false) == 57600000
 	}
 
-	var answerA = "4"
-	var answerB = ""
+	var answerA = "222870"
+	var answerB = "117936"
 	
-	func solveAExamples() -> Int {
-		
+	func solveExamples(findMax: Bool) -> Int {
+
 //	Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8
 //	Cinnamon: capacity 2, durability 3, flavor -2, texture -1, calories 3
-
 		
 		let butterscotch = Entry(ingredient: "Butterscotch", capacity: -1, durability: -2, flavor: 6, texture: 3, calories: 8)
 		let cinnamon = Entry(ingredient: "Cinnamon", capacity: 2, durability: 3, flavor: -2, texture: -1, calories: 3)
 
 		var maxVal = 0
 		for bu in 1...99 {
-//		let bu = 44
 			let ci = 100 - bu
 			if ci > 0 {
 				let cap = bu * butterscotch.capacity + ci * cinnamon.capacity
@@ -37,13 +35,20 @@ class Solve15: PuzzleSolver {
 				if cap < 0 || dur < 0 || fla < 0 || tex < 0 {
 					val = 0
 				}
-				maxVal = max(maxVal, val)
+				
+				if findMax {
+					maxVal = max(maxVal, val)
+				} else {
+					if bu * butterscotch.calories + ci * cinnamon.calories == 500 {
+						return val
+					}
+ 				}
 			}
 		}
 		return maxVal
 	}
 
-	func solveA() -> String {
+	func solve(findMax: Bool) -> Int {
 	// Sugar: capacity 3, durability 0, flavor 0, texture -3, calories 2
 	// Sprinkles: capacity -3, durability 3, flavor 0, texture 0, calories 9
 	// Candy: capacity -1, durability 0, flavor 4, texture 0, calories 1
@@ -65,21 +70,31 @@ class Solve15: PuzzleSolver {
 						let fla = su * sugar.flavor + sp * sprinkles.flavor + ca * candy.flavor + ch * chocolate.flavor
 						let tex = su * sugar.texture + sp * sprinkles.texture + ca * candy.texture + ch * chocolate.texture
 						
-						var val = cap * dur * fla * tex
+						let val = cap * dur * fla * tex
 						if cap < 0 || dur < 0 || fla < 0 || tex < 0 {
-							val = 0
+							continue
 						}
 
-						maxVal = max(maxVal, val)
+						if findMax {
+							maxVal = max(maxVal, val)
+						} else {
+							if su * sugar.calories + sp * sprinkles.calories + ca * candy.calories + ch * chocolate.calories == 500 {
+								maxVal = max(maxVal, val)
+							}
+						}
 					}
 				}
 			}
 		}
-		return maxVal.description
+		return maxVal
+	}
+
+	func solveA() -> String {
+		solve(findMax: true).description
 	}
 
 	func solveB() -> String {
-		""
+		solve(findMax: false).description
 	}
 
 	struct Entry {
