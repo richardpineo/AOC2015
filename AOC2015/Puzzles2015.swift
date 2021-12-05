@@ -22,6 +22,7 @@ class Puzzles2015: PuzzlesRepo {
 			Puzzle(year: year, id: 13, name: "Knights of the Dinner Table") { Solve13() },
 			Puzzle(year: year, id: 14, name: "Reindeer Olympics") { Solve14() },
 			Puzzle(year: year, id: 15, name: "Science for Hungry People") { Solve15() },
+			Puzzle(year: year, id: 16, name: "Aunt Sue") { Solve16() },
 		])
 	}
 
