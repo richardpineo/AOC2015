@@ -5,15 +5,15 @@ import SwiftUI
 
 class Solve17: PuzzleSolver {
 	func solveAExamples() -> Bool {
-		return solveA(sizes: exampleSizes, total: 25) == 4
+		solveA(sizes: exampleSizes, total: 25) == 4
 	}
 
 	func solveBExamples() -> Bool {
-		return solveB(sizes: exampleSizes, total: 25) == 3
+		solveB(sizes: exampleSizes, total: 25) == 3
 	}
 
 	private let exampleSizes = [20, 15, 10, 5, 5]
-	
+
 	var answerA = "1304"
 	var answerB = "18"
 
