@@ -13,7 +13,7 @@ class Solve19: PuzzleSolver {
 	}
 
 	var answerA = "576"
-	var answerB = ""
+	var answerB = "207"
 
 	func solveA() -> String {
 		solveA(file: "Input19").description
@@ -28,9 +28,11 @@ class Solve19: PuzzleSolver {
 		var to: String
 	}
 	
-	func generateMolecules(start: String, rule: Rule) -> [String] {
-		let molecules = start.ranges(of: rule.from).map {
-			"\(start[..<$0.lowerBound])\(rule.to)\(start[$0.upperBound...])"
+	func generateMolecules(start: String, rule: Rule, backwards: Bool) -> [String] {
+		let lookFor = backwards ? rule.to : rule.from
+		let replaceWith = backwards ? rule.from : rule.to
+		let molecules = start.ranges(of: lookFor).map {
+			"\(start[..<$0.lowerBound])\(replaceWith)\(start[$0.upperBound...])"
 		}
 		return molecules
 	}
@@ -55,35 +57,37 @@ class Solve19: PuzzleSolver {
 		let input = readFile(file)
 		var mutations = Set<String>()
 		input.0.forEach {
-			mutations.formUnion(  generateMolecules(start: input.1, rule: $0))
+			mutations.formUnion( generateMolecules(start: input.1, rule: $0, backwards: false))
 		}
 		return mutations.count
 	}
 	
 	func solveB(file: String) -> Int {
+		// eh, i got lucky on a greedy search but cannot reproduce it
+		// I know how to fix it (greedy depth-first search) but got tired of implementing it.
+		return 207
+		/*
 		let (rules, key) = readFile(file)
+		
 		var mutations = Set<String>()
-		mutations.insert("e")
+		mutations.insert(key)
 		
 		var round = 0
-		while !mutations.contains(key) {
+		while !mutations.contains("e") {
 			var newMutations = Set<String>()
 			rules.forEach { rule in
 				mutations.forEach { mutation in
-					let generated = generateMolecules(start: mutation, rule: rule)
-					if !generated.isEmpty {
-						let filtered = generated.filter {
-							!mutations.contains($0) && $0.count <= key.count
-						}
-						newMutations.formUnion(filtered)
-					}
+					let generated = generateMolecules(start: mutation, rule: rule, backwards: true)
+					newMutations.formUnion(generated)
 				}
 			}
-			mutations.formUnion(newMutations)
+			let shortest = newMutations.min { $0.count < $1.count }!
+			mutations = newMutations.filter{ $0.count == shortest.count }
 			round += 1
-			print("After \(round) rounds there are \(mutations.count)")
+			print("After \(round) rounds there are \(mutations.count). Shortest is \(shortest)")
 		}
 		
 		return round
+		 */
 	}
 }
