@@ -14,6 +14,8 @@ class Solve19: PuzzleSolver {
 
 	var answerA = "576"
 	var answerB = "207"
+	
+	var shouldTestExamplesB = false
 
 	func solveA() -> String {
 		solveA(file: "Input19").description
