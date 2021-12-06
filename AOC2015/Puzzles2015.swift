@@ -23,6 +23,7 @@ class Puzzles2015: PuzzlesRepo {
 			Puzzle(year: year, id: 14, name: "Reindeer Olympics") { Solve14() },
 			Puzzle(year: year, id: 15, name: "Science for Hungry People") { Solve15() },
 			Puzzle(year: year, id: 16, name: "Aunt Sue") { Solve16() },
+			Puzzle(year: year, id: 17, name: "No Such Thing as Too Much") { Solve17() },
 		])
 	}
 

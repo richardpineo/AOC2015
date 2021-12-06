@@ -16,7 +16,7 @@ class Solve16: PuzzleSolver {
 	var answerB = "405"
 
 	func goodSue() -> Sue {
-		var props = Dictionary<String, Int>()
+		var props = [String: Int]()
 		props["children"] = 3
 		props["cats"] = 7
 		props["samoyeds"] = 2
@@ -29,18 +29,19 @@ class Solve16: PuzzleSolver {
 		props["perfumes"] = 1
 		return Sue(num: -1, props: props)
 	}
+
 	func solveA() -> String {
-		return solveA(sue: goodSue()).description
+		solveA(sue: goodSue()).description
 	}
 
 	func solveB() -> String {
-		return solveB(sue: goodSue()).description
+		solveB(sue: goodSue()).description
 	}
-	
+
 	struct Sue {
 		var num: Int
-		var props: Dictionary<String, Int>
-		
+		var props: [String: Int]
+
 		func matchesA(sue: Sue) -> Bool {
 			sue.props.allSatisfy {
 				guard let found = props[$0.key] else {
@@ -55,7 +56,7 @@ class Solve16: PuzzleSolver {
 				guard let found = props[$0.key] else {
 					return true
 				}
-				
+
 				switch $0.key {
 				case "cats", "trees":
 					// cats and trees greater
@@ -71,12 +72,12 @@ class Solve16: PuzzleSolver {
 				}
 			}
 		}
-		
+
 		static func parse(line: String) -> Sue {
 			let tokens = line.components(separatedBy: [" ", ":", ","])
-			
+
 			let sueNum = Int(tokens[1])!
-			var props = Dictionary<String, Int>()
+			var props = [String: Int]()
 			props[tokens[3]] = Int(tokens[5])!
 			props[tokens[7]] = Int(tokens[9])!
 			props[tokens[11]] = Int(tokens[13])!
@@ -86,15 +87,15 @@ class Solve16: PuzzleSolver {
 
 	func solveA(sue: Sue) -> Int {
 		let array = FileHelper.load("Input16")!.filter { !$0.isEmpty }
-		let sues = array.map { Sue.parse(line: $0)}
-		let found = sues.first { $0.matchesA(sue: sue )}
+		let sues = array.map { Sue.parse(line: $0) }
+		let found = sues.first { $0.matchesA(sue: sue) }
 		return found?.num ?? -666
 	}
 
 	func solveB(sue: Sue) -> Int {
 		let array = FileHelper.load("Input16")!.filter { !$0.isEmpty }
-		let sues = array.map { Sue.parse(line: $0)}
-		let found = sues.first { $0.matchesB(sue: sue )}
+		let sues = array.map { Sue.parse(line: $0) }
+		let found = sues.first { $0.matchesB(sue: sue) }
 		return found?.num ?? -666
 	}
 }
