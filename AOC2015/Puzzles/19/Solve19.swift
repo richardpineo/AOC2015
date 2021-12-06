@@ -12,7 +12,7 @@ class Solve19: PuzzleSolver {
 		true
 	}
 
-	var answerA = ""
+	var answerA = "576"
 	var answerB = ""
 
 	func solveA() -> String {
@@ -30,14 +30,9 @@ class Solve19: PuzzleSolver {
 	}
 	
 	func generateMolecules(start: String, rule: Rule) -> [String] {
-		var molecules: [String] = []
-		
-		let found = start.ranges(of: rule.from)
-		found.forEach {
-			let mol = "\(start[..<$0.lowerBound])\(rule.to)\(start[$0.upperBound...])"
-			molecules.append(mol)
+		let molecules = start.ranges(of: rule.from).map {
+			"\(start[..<$0.lowerBound])\(rule.to)\(start[$0.upperBound...])"
 		}
-		
 		return molecules
 	}
 	
