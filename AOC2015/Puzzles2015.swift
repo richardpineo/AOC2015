@@ -26,6 +26,7 @@ class Puzzles2015: PuzzlesRepo {
 			Puzzle(year: year, id: 17, name: "No Such Thing as Too Much") { Solve17() },
 			Puzzle(year: year, id: 18, name: "Like a GIF For Your Yard") { Solve18() },
 			Puzzle(year: year, id: 19, name: "Medicine for Rudolph") { Solve19() },
+			Puzzle(year: year, id: 20, name: "Infinite Elves and Infinite Houses") { Solve20() },
 		])
 	}
 
